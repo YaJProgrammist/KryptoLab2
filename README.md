@@ -40,7 +40,7 @@ First time we'll be use the most popular word "the"
 Now we can see the result : <br>
 ![resultOfWordThe.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordThe.jpg?raw=true)<br>
 
-As we see, in some ocassions it returns combination of readable letters, but the whole word is still hard to recognize. So we should try another word, for example "and " - as we consider, phrases must contain spaces, so we can try enter words with them<br>
+As we see, in some ocassions it returns combination of readable letters, but the whole word is still hard to recognize. So we should try another crib, for example "and " - as we consider, phrases must contain spaces, so we can try enter words with them<br>
 
 The result : <br>
 ![resultOfWordAnd.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordAnd.jpg?raw=true)<br>
