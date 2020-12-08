@@ -61,7 +61,7 @@ namespace KryptoLab2
 
             byte[] q1q2XOR = XOR(firstCiphertext, secondCiphertext);
 
-            for (int i = 0; i < q1q2XOR.Length; i++)
+            for (int i = 0; i < 1 + q1q2XOR.Length - encodingCribWord.Length; i++)
             {
                 Console.WriteLine(i + "     " + BytesToStr(XOR(encodingCribWord, SubArray(q1q2XOR, i, encodingCribWord.Length))));
             }
