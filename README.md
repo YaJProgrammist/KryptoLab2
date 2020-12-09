@@ -61,6 +61,6 @@ So using this method we can find all other words for our ciphertexts\
 There are also existing calculators that can be used for this work, like \
 https://lzutao.github.io/cribdrag/ \
 example of using this program - we've got the same result \
-![existedSolverResult1.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordIfyou.jpg?raw=true)
+![existedSolverResult1.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/existedSolverResult1.jpg?raw=true)
 \
-![existedSolverResult2.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordIfyou.jpg?raw=true)
+![existedSolverResult2.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/existedSolverResult2.jpg?raw=true)
