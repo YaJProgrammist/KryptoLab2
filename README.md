@@ -10,41 +10,53 @@ E(B) = B xor C<br>
 where xor is performed bit by bit.<br>
 Say an adversary has intercepted E(A) and E(B). He can easily compute: <br>
 E(A) xor E(B)<br>
-However, xor is commutative and has the property that X xor X = 0 (self-inverse) so:
+However, xor is commutative and has the property that X xor X = 0 (self-inverse) so:<br>
 E(A) xor E(B) = (A xor C) xor (B xor C) = A xor B xor C xor C = A xor B<br>
 E(A) xor E(B)<br>
 However, xor is commutative and has the property that X xor X = 0 (self-inverse) so:<br>
 <br>
-E(A) xor E(B) = (A xor C) xor (B xor C) = A xor B xor C xor C = A xor B
+E(A) xor E(B) = (A xor C) xor (B xor C) = A xor B xor C xor C = A xor B<br>
 <br>
-That means, if A and B were encrypted using the same key, we can decrypt A xor B
-
+That means, if A and B were encrypted using the same key, we can decrypt A xor B<br>
+<br>
 <b>Algorithm by example:</b><br>
 Input : <br>
 Using first two quotes from https://docs.google.com/document/d/19vgZtvDN4_StEgVEM9MjfxnqfayByLNMD7PFJgvZv7c/edit <br>
 ![ciphertext.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/ciphertext.jpg?raw=true)<br>
-
+<br>
 1) Guess a word that might appear in one of the messages <br>
 For this point we might check https://en.wikipedia.org/wiki/Most_common_words_in_English <br>
-First time we'll be use the most popular word "the"
-
+First time we'll be use the most popular word "the"<br>
+<br>
 2) Encode the word from step 1 to a hex string <br>
-
+Using the following method :<br>
+![strToBytes.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/strToBytes.jpg?raw=true)<br>
+![strToBytesFunc.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/strToBytesFunc.jpg?raw=true)<br>
+<br>
 3) XOR the two cipher-text messages <br>
-
+If your cipher-texts have different length, we'll take the length of the shortest one, so the "tail" of the longer will be cut. However, we can aslo decrypt this "tail" using the same method. <br>
+![q1q2XOR.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/q1q2XOR.jpg?raw=true)<br>
+![XORfunc.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/XORfunc.jpg?raw=true)<br>
+<br>
 4) XOR the hex string from step 2 at each position of the XOR of the two cipher-texts (from step 3) <br>
 ![q1q2XORcribword.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/q1q2XORcribword.jpg?raw=true)<br>
-
+<br>
 5) When the result from step 4 is a readable text, we guess the English word and expand our crib search. <br>
 -> If the result is not readable text, we try an XOR of the crib word at the next position. <br>
 Now we can see the result : <br>
 ![resultOfWordThe.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordThe.jpg?raw=true)<br>
-
+<br>
 As we see, in some ocassions it returns combination of readable letters, but the whole word is still hard to recognize. So we should try another crib, for example "and " - as we consider, phrases must contain spaces, so we can try enter words with them<br>
-
+<br>
 The result : <br>
 ![resultOfWordAnd.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordAnd.jpg?raw=true)<br>
 So we've got readable text "if y" on the [0] position of the text (offset equals zero) <br>
-We then repeat the process, guessing what “if y” might be when expanded and then XOR that result with the XOR of the cipher-texts. Let's check crib “if you ” - convert it to a hex string, and XOR it with the XOR of the cipher-texts, we’ll get “and ris”.
+We then repeat the process, guessing what “if y” might be when expanded and then XOR that result with the XOR of the cipher-texts. Let's check crib “if you ” - convert it to a hex string, and XOR it with the XOR of the cipher-texts, we’ll get “and ris”.<br>
 ![resultOfWordIfyou.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordIfyou.jpg?raw=true)<br>
 So using this method we can find all other words for our ciphertexts<br>
+<br>
+There are also existing calculators that can be used for this work, like <br>
+https://lzutao.github.io/cribdrag/ <br>
+example of using this program - we've got the same result <br>
+![existedSolverResult1.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordIfyou.jpg?raw=true)<br>
+![existedSolverResult2.jpg](https://github.com/YaJProgrammist/KryptoLab2/blob/main/Screenshots/resultOfWordIfyou.jpg?raw=true)<br>
