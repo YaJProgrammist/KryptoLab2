@@ -48,9 +48,9 @@ namespace KryptoLab2
             return Encoding.ASCII.GetString(input);
         }
 
-        public static byte[] SubArray(byte[] array, int head, int length)
+        public static byte[] SubArray(byte[] array, int offset, int length)
         {
-            return array.Skip(head)
+            return array.Skip(offset)
                         .Take(length)
                         .ToArray();
         }
@@ -70,10 +70,10 @@ namespace KryptoLab2
         public static void Main(string[] args)
         {
             //Console.WriteLine("Enter first ciphertext");
-            //quote1 = StrToBytes(Console.ReadLine());
+            //string quote1 = StrToBytes(Console.ReadLine());
 
             //Console.WriteLine("Enter second ciphertext");
-            //quote2 = StrToBytes(Console.ReadLine());
+            //string quote2 = StrToBytes(Console.ReadLine());
 
             firstCiphertext = HexStrToBytes("ad924af7a9cdaf3a1bb0c3fe1a20a3f367d82b0f05f8e75643ba688ea2ce8ec88f4762fbe93b50bf5138c7b699");
             secondCiphertext = HexStrToBytes("a59a0eaeb4d1fc325ab797b31425e6bc66d36e5b18efe8060cb32edeaad68180db4979ede43856a24c7d");
@@ -87,7 +87,8 @@ namespace KryptoLab2
                     cribWord = Console.ReadLine();
 
                     AttackTheEncryption();
-                } else
+                } 
+                else
                 {
                     break;
                 }
